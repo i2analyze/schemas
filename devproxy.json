@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://pages.github.com/i2analyze/schemas/devproxy.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "port": 3000,
+      "server": "http://localhost:9082/opal",
+      "plugins": [
+        "http://localhost:5002/opal/plugins/plugin2",
+        "http://localhost:5003/opal/plugins/plugin3",
+        "http://localhost:5004/opal/plugins/plugin4"
+      ]
+    }
+  ],
+  "required": ["port", "server", "plugins"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "port": {
+      "$id": "#/properties/port",
+      "type": "integer",
+      "title": "The port schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [3000]
+    },
+    "server": {
+      "$id": "#/properties/server",
+      "type": "string",
+      "title": "The server schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": ["http://localhost:9082/opal"]
+    },
+    "plugins": {
+      "$id": "#/properties/plugins",
+      "type": "array",
+      "title": "The plugins schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        ["http://localhost:5002/opal/plugins/plugin2", "http://localhost:5003/opal/plugins/plugin3"]
+      ],
+      "additionalItems": false,
+      "items": {
+        "$id": "#/properties/plugins/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/plugins/items/anyOf/0",
+            "type": "string",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "http://localhost:5002/opal/plugins/plugin2",
+              "http://localhost:5003/opal/plugins/plugin3"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}
