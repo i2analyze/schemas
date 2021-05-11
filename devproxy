@@ -1,9 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://i2analyze.github.io/schemas/devproxy.json",
+  "$id": "https://i2analyze.github.io/schemas/devproxy",
   "type": "object",
-  "title": "The root schema",
-  "description": "The root schema comprises the entire JSON document.",
+  "title": "JSON schema for the i2 Analyze Development Proxy's configuration file",
   "default": {},
   "examples": [
     {
@@ -24,24 +23,20 @@
     "port": {
       "$id": "#/properties/port",
       "type": "integer",
-      "title": "The port schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": 0,
+      "description": "The port that the development proxy should listen on.",
+      "default": 3000,
       "examples": [3000]
     },
     "server": {
       "$id": "#/properties/server",
       "type": "string",
-      "title": "The server schema",
-      "description": "An explanation about the purpose of this instance.",
-      "default": "",
+      "description": "The server that the development proxy should proxy to.",
       "examples": ["http://localhost:9082/opal"]
     },
     "plugins": {
       "$id": "#/properties/plugins",
       "type": "array",
-      "title": "The plugins schema",
-      "description": "An explanation about the purpose of this instance.",
+      "description": "URLs for plugins in development.",
       "default": [],
       "examples": [
         ["http://localhost:5002/opal/plugins/plugin2", "http://localhost:5003/opal/plugins/plugin3"]
@@ -55,7 +50,6 @@
             "type": "string",
             "title": "The first anyOf schema",
             "description": "An explanation about the purpose of this instance.",
-            "default": "",
             "examples": [
               "http://localhost:5002/opal/plugins/plugin2",
               "http://localhost:5003/opal/plugins/plugin3"
